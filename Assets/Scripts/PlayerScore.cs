@@ -22,5 +22,21 @@ public class PlayerScore : MonoBehaviour
             // Destroy the coin
             Destroy(other.gameObject);
         }
+
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy Head"))
+        {
+            score++;
+            score++;
+
+            // Update the UI or display the score in some way
+            Debug.Log("Score: " + score);
+
+            
+            
+        }
     }
 }
