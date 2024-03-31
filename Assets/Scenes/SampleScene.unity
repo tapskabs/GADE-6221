@@ -143,8 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 14338622}
   spawnInterval: 3.5
-  spawnDistance: 7
-  destroyDelay: 6
+  spawnDistance: 6
+  destroyDelay: 15
 --- !u!114 &14338632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bfc4e2a6aa44c43b4420e30936e7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1027452140}
 --- !u!1 &207879533
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bfc4e2a6aa44c43b4420e30936e7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1027452140}
 --- !u!114 &678697944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,9 +950,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1051031620}
-  spawnInterval: 4
-  spawnDistance: 3
-  destroyDelay: 10
+  spawnInterval: 3
+  spawnDistance: 4
+  destroyDelay: 15
 --- !u!1 &1086785935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1286,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8326025340258002771, guid: 263c490cf2743084bb488c08746cc724, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1027452140}
     m_RemovedComponents:
     - {fileID: 1507799403852438844, guid: 263c490cf2743084bb488c08746cc724, type: 3}
     m_RemovedGameObjects: []
@@ -1353,7 +1357,7 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: 4f3727bd86689e7498beda040aa87ad5, type: 2}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: destroyDelay
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: spawnDistance

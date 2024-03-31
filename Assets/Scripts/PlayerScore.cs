@@ -16,8 +16,8 @@ public class PlayerScore : MonoBehaviour
             // Increase the score by 1
             score++;
 
-             scoreText.text = ("Score: " + score).ToString();
-            // Update the UI or display the score in some way
+            scoreText.text = ("Score: " + score).ToString();
+            
            // Debug.Log("Score: " + score);
 
             // Destroy the coin
@@ -32,7 +32,7 @@ public class PlayerScore : MonoBehaviour
         {
             score++;
             score++;
-
+            scoreText.text = ("Score: " + score).ToString();
             // Update the UI or display the score in some way
             Debug.Log("Score: " + score);
 
