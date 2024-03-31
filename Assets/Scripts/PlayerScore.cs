@@ -32,9 +32,9 @@ public class PlayerScore : MonoBehaviour
         {
             score++;
             score++;
-
+            scoreText.text = ("Score: " + score).ToString();
             // Update the UI or display the score in some way
-            Debug.Log("Score: " + score);
+           // Debug.Log("Score: " + score);
 
             
             
