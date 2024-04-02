@@ -5,6 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+    private Transform playerTransform;
+    
+
+    void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        
+    }
+    private void Update()
+    {
+        if (playerTransform.transform.position.y <= 0.1)
+        {
+            Invoke(nameof(ReloadLevel), 1f);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy Body"))
@@ -24,6 +39,10 @@ public class PlayerLife : MonoBehaviour
         {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+     
+       public void FallDie()
+    {
 
+    }
    
 }
