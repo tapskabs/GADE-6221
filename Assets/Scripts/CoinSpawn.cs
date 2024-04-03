@@ -7,7 +7,7 @@ public class CoinSpawn : MonoBehaviour
     public GameObject coinPrefab;
     public float spawnInterval = 2f;
     public float spawnDistance = 3f;
-    public float destroyDelay = 2f;
+    public float destroyDelay = 10f;
 
     private Transform playerTransform;
     private float nextSpawnTime;
