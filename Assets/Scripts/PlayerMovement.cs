@@ -9,13 +9,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
-    // Start is called before the first frame update
+
+    bool isBoosted = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -25,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
-            Jump();
+            if (!isBoosted)
+                Jump();
+            else
+                StartCoroutine(BoostedJump());
         }
     }
 
@@ -33,7 +37,14 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
     }
-  
+
+    IEnumerator BoostedJump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, jumpForce + 5f, rb.velocity.z);
+        yield return new WaitForSeconds(5f);
+        isBoosted = false;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy Head"))
@@ -43,10 +54,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("JumpPU"))
+        {
+            isBoosted = true;
+            Destroy(other.gameObject);
+        }
+    }
 
     bool isGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
     }
-
 }
