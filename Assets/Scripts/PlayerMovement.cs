@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
-    bool isBoosted = false;
+    bool isJumpBoosted = false;
+    bool isSpeedBoosted = false;
 
     void Start()
     {
@@ -26,10 +27,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
-            if (!isBoosted)
+            if (!isJumpBoosted)
                 Jump();
             else
                 StartCoroutine(BoostedJump());
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isSpeedBoosted)
+        {
+            SpeedBoost();
         }
     }
 
@@ -42,7 +48,21 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce + 5f, rb.velocity.z);
         yield return new WaitForSeconds(5f);
-        isBoosted = false;
+        isJumpBoosted = false;
+    }
+
+    void SpeedBoost()
+    {
+        movementSpeed *= 2; // Increase movement speed by doubling it
+        isSpeedBoosted = true;
+        StartCoroutine(ResetSpeedBoost());
+    }
+
+    IEnumerator ResetSpeedBoost()
+    {
+        yield return new WaitForSeconds(5f);
+        movementSpeed /= 2; // Reset movement speed to normal
+        isSpeedBoosted = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,7 +78,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("JumpPU"))
         {
-            isBoosted = true;
+            isJumpBoosted = true;
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("SpeedPU"))
+        {
+            SpeedBoost();
             Destroy(other.gameObject);
         }
     }
