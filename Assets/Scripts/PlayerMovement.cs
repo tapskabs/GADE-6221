@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
+    [SerializeField] TextMeshProUGUI pickupStatusText; 
 
     bool isJumpBoosted = false;
     bool isSpeedBoosted = false;
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        UpdatePickupStatusText();
     }
 
     void Update()
@@ -33,10 +36,7 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(BoostedJump());
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !isSpeedBoosted)
-        {
-            SpeedBoost();
-        }
+        
     }
 
     void Jump()
@@ -49,20 +49,23 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, jumpForce + 5f, rb.velocity.z);
         yield return new WaitForSeconds(5f);
         isJumpBoosted = false;
+        UpdatePickupStatusText(); 
     }
 
     void SpeedBoost()
     {
-        movementSpeed *= 2; // Increase movement speed by doubling it
+        movementSpeed *= 2; 
         isSpeedBoosted = true;
         StartCoroutine(ResetSpeedBoost());
+        UpdatePickupStatusText(); 
     }
 
     IEnumerator ResetSpeedBoost()
     {
         yield return new WaitForSeconds(5f);
-        movementSpeed /= 2; // Reset movement speed to normal
+        movementSpeed /= 2; 
         isSpeedBoosted = false;
+        UpdatePickupStatusText(); 
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -80,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumpBoosted = true;
             Destroy(other.gameObject);
+            UpdatePickupStatusText(); 
         }
 
         if (other.CompareTag("SpeedPU"))
@@ -92,5 +96,24 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
+    }
+
+    void UpdatePickupStatusText()
+    {
+        if (pickupStatusText != null)
+        {
+            if (isJumpBoosted)
+            {
+                pickupStatusText.text = "Jump Boost: Active";
+            }
+            else if (isSpeedBoosted)
+            {
+                pickupStatusText.text = "Speed Boost: Active";
+            }
+            else
+            {
+                pickupStatusText.text = "No Boost Active";
+            }
+        }
     }
 }
