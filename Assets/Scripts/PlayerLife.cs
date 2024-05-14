@@ -11,13 +11,18 @@ public class PlayerLife : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
+       
     }
     private void Update()
     {
         if (playerTransform.transform.position.y <= 0.1)
         {
             Invoke(nameof(ReloadLevel), 1f);
+            
+        }
+        else
+        {
+            
         }
     }
     private void OnCollisionEnter(Collision collision)
