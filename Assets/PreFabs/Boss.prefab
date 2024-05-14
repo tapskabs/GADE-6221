@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7502374519029915526}
   - component: {fileID: 3517352632244269976}
   - component: {fileID: 809869076949375980}
-  - component: {fileID: -1035612643657217761}
+  - component: {fileID: 5621888029177421681}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -121,34 +121,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab5ce43454ae7c642949a715c96749bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 4895428321224948274}
-  spawnInterval: 10
-  bossSpeed: 5
-  projectilePrefab: {fileID: 1520428871982268296, guid: 47e196d1b689d6b498e7e77e415109c7, type: 3}
---- !u!54 &-1035612643657217761
-Rigidbody:
+  enemyPrefab: {fileID: 4895428321224948274}
+  spawnInterval: 2
+  spawnDistance: 2
+  destroyDelay: 8
+--- !u!114 &5621888029177421681
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4895428321224948274}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5066a43f13236994b883e7111307da77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1520428871982268296, guid: 47e196d1b689d6b498e7e77e415109c7, type: 3}
+  projectileSpeed: 100
+  shootInterval: 1
