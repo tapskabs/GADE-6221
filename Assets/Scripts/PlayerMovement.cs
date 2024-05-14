@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 10f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
-    [SerializeField] TextMeshProUGUI pickupStatusText; 
+    [SerializeField] TextMeshProUGUI pickupStatusText;
 
     bool isJumpBoosted = false;
     bool isSpeedBoosted = false;
+    int jumpCount = 0;
+    int maxJumpCount = 2; // Allow double jump
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
 
-        if (Input.GetButtonDown("Jump") && isGrounded())
+        if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
         {
             if (!isJumpBoosted)
                 Jump();
@@ -36,36 +38,41 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(BoostedJump());
         }
 
-        
+        if (isGrounded())
+        {
+            jumpCount = 0; // Reset jump count when grounded
+        }
     }
 
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        jumpCount++;
     }
 
     IEnumerator BoostedJump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce + 5f, rb.velocity.z);
+        jumpCount++;
         yield return new WaitForSeconds(5f);
         isJumpBoosted = false;
-        UpdatePickupStatusText(); 
+        UpdatePickupStatusText();
     }
 
     void SpeedBoost()
     {
-        movementSpeed *= 2; 
+        movementSpeed *= 2;
         isSpeedBoosted = true;
         StartCoroutine(ResetSpeedBoost());
-        UpdatePickupStatusText(); 
+        UpdatePickupStatusText();
     }
 
     IEnumerator ResetSpeedBoost()
     {
         yield return new WaitForSeconds(5f);
-        movementSpeed /= 2; 
+        movementSpeed /= 2;
         isSpeedBoosted = false;
-        UpdatePickupStatusText(); 
+        UpdatePickupStatusText();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -83,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumpBoosted = true;
             Destroy(other.gameObject);
-            UpdatePickupStatusText(); 
+            UpdatePickupStatusText();
         }
 
         if (other.CompareTag("SpeedPU"))
