@@ -198,6 +198,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1858250848939112994, guid: 08f439a50b732dc48b06d829ce99b250, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7243627}
+    - targetCorrespondingSourceObject: {fileID: 1858250848939112994, guid: 08f439a50b732dc48b06d829ce99b250, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7243632}
   m_SourcePrefab: {fileID: 100100000, guid: 08f439a50b732dc48b06d829ce99b250, type: 3}
 --- !u!4 &7243625 stripped
 Transform:
@@ -241,6 +244,19 @@ MonoBehaviour:
   spawnInterval: 2
   spawnDistance: 4
   destroyDelay: 4
+  SparkEffect: {fileID: 0}
+--- !u!114 &7243632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7ed43447493e14f88f0e35a298fa1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &14338622 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1858250848939112994, guid: 08f439a50b732dc48b06d829ce99b250, type: 3}
@@ -267,6 +283,7 @@ MonoBehaviour:
   spawnInterval: 2
   spawnDistance: 4
   destroyDelay: 4
+  SparkEffect: {fileID: 524362925323473342, guid: f23ca344d22b7d84b848fb882e92bf51, type: 3}
 --- !u!114 &14338632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1596,6 +1613,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   pickupStatusText: {fileID: 1838125100}
+  SparkEffect: {fileID: 524362925323473342, guid: f23ca344d22b7d84b848fb882e92bf51, type: 3}
 --- !u!114 &678697943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2591,7 +2609,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 1051031620}
   spawnInterval: 2
   spawnDistance: 8
-  destroyDelay: 3
+  destroyDelay: 4.2
 --- !u!1001 &1076437923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3763,8 +3781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2080116226}
-  projectileSpeed: 50
-  shootInterval: 1
+  projectileSpeed: 40
+  shootInterval: 5
 --- !u!4 &2017213606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8810582416529190602, guid: be610da9ab7250443b94152afd92835f, type: 3}

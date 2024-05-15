@@ -8,6 +8,8 @@ public class EnemySpawn : MonoBehaviour
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
     public float destroyDelay = 2f;
+    [SerializeField] GameObject SparkEffect;
+   // [SerializeField] ParticleSystem
 
     private Transform playerTransform;
     private float nextSpawnTime;
@@ -31,6 +33,9 @@ public class EnemySpawn : MonoBehaviour
     {
         Vector3 spawnPosition = playerTransform.position + Vector3.forward * spawnDistance;
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        Destroy(newEnemy, destroyDelay);
+       Destroy(newEnemy, destroyDelay);
+
     }
+    
+
 }

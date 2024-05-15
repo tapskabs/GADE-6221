@@ -11,11 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
     [SerializeField] TextMeshProUGUI pickupStatusText;
-
+    [SerializeField] GameObject SparkEffect;
     bool isJumpBoosted = false;
     bool isSpeedBoosted = false;
     int jumpCount = 0;
-    int maxJumpCount = 2; // Allow double jump
+    int maxJumpCount = 2; 
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded())
         {
-            jumpCount = 0; // Reset jump count when grounded
+            jumpCount = 0; 
         }
     }
 
@@ -79,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy Head"))
         {
+
             Destroy(collision.transform.parent.gameObject);
+            InstantiateAndDestroySparkEffect(collision.transform.position);
             Jump();
         }
     }
@@ -122,5 +124,11 @@ public class PlayerMovement : MonoBehaviour
                 pickupStatusText.text = "No Boost Active";
             }
         }
+    }
+
+    void InstantiateAndDestroySparkEffect(Vector3 position)
+    {
+        GameObject spark = Instantiate(SparkEffect, position, Quaternion.identity);
+        Destroy(spark, 2f); 
     }
 }
