@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 14338622}
   spawnInterval: 2
-  spawnDistance: 4
+  spawnDistance: 6
   destroyDelay: 4
 --- !u!114 &14338632
 MonoBehaviour:
@@ -510,6 +510,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3735566847997602817, guid: 567217035a0b1124a83624cce590cf18, type: 3}
   m_PrefabInstance: {fileID: 3679349813791008380}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &514815171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156541159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5066a43f13236994b883e7111307da77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2105988509}
+  projectileSpeed: 50
+  shootInterval: 1
+>>>>>>> Stashed changes
 --- !u!1 &519282158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,7 +2406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1141270993259226249, guid: 1401ec12476b43c46b1e07ec7efd74cc, type: 3}
       propertyPath: spawnInterval
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4640429746333823098, guid: 1401ec12476b43c46b1e07ec7efd74cc, type: 3}
       propertyPath: m_IsTrigger
@@ -2549,15 +2567,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3735566847997602817, guid: 567217035a0b1124a83624cce590cf18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3255732
+      value: -100000
       objectReference: {fileID: 0}
     - target: {fileID: 3735566847997602817, guid: 567217035a0b1124a83624cce590cf18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6451187
+      value: -10000
       objectReference: {fileID: 0}
     - target: {fileID: 3735566847997602817, guid: 567217035a0b1124a83624cce590cf18, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.070429
+      value: -100000
       objectReference: {fileID: 0}
     - target: {fileID: 3735566847997602817, guid: 567217035a0b1124a83624cce590cf18, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2756,7 +2774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3991471496729854848, guid: 47e196d1b689d6b498e7e77e415109c7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9491051
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: 3991471496729854848, guid: 47e196d1b689d6b498e7e77e415109c7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2861,7 +2879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: spawnDistance
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: spawnInterval

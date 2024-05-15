@@ -8,9 +8,11 @@ public class FloorSpawn : MonoBehaviour
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
     public float destroyDelay = 2f;
+    public int maxSpawnCount = 20; // Maximum number of platforms to spawn
 
     private Transform playerTransform;
     private float nextSpawnTime;
+    private int spawnCount = 0; // Counter to keep track of spawned platforms
 
     void Start()
     {
@@ -20,7 +22,7 @@ public class FloorSpawn : MonoBehaviour
 
     void Update()
     {
-        if (Time.time >= nextSpawnTime)
+        if (spawnCount < maxSpawnCount && Time.time >= nextSpawnTime)
         {
             SpawnPlatform();
             nextSpawnTime = Time.time + spawnInterval;
@@ -32,5 +34,6 @@ public class FloorSpawn : MonoBehaviour
         Vector3 spawnPosition = playerTransform.position + Vector3.forward * spawnDistance;
         GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
         Destroy(newPlatform, destroyDelay);
+        spawnCount++; // Increment the spawn count
     }
 }
