@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7123576211232542417}
   - component: {fileID: 7502374519029915526}
   - component: {fileID: 3517352632244269976}
-  - component: {fileID: 809869076949375980}
   - component: {fileID: -1035612643657217761}
+  - component: {fileID: -1068085521206817772}
+  - component: {fileID: -922435129010258479}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -109,22 +110,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &809869076949375980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4895428321224948274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab5ce43454ae7c642949a715c96749bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 4895428321224948274}
-  spawnInterval: 10
-  bossSpeed: 5
-  projectilePrefab: {fileID: 1520428871982268296, guid: 47e196d1b689d6b498e7e77e415109c7, type: 3}
 --- !u!54 &-1035612643657217761
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -152,3 +137,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1068085521206817772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895428321224948274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5ce43454ae7c642949a715c96749bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 4895428321224948274}
+  spawnInterval: 20
+  spawnDistance: 10
+  destroyDelay: 20
+  maxSpawnCount: 1
+  SparkEffect: {fileID: 5634767591545691478, guid: 05bc110473df9574f8a94afc5484e1b0, type: 3}
+--- !u!114 &-922435129010258479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895428321224948274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41f16a6d0fd383428353d4aaef72489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1520428871982268296, guid: 47e196d1b689d6b498e7e77e415109c7, type: 3}
+  projectileSpeed: 50
+  shootInterval: 1

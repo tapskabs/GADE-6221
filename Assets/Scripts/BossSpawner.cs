@@ -12,7 +12,7 @@ public class BossSpawner : MonoBehaviour
     private Transform playerTransform;
     private float nextSpawnTime;
     private int spawnCount = 0;
-
+    [SerializeField] GameObject SparkEffect;
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
