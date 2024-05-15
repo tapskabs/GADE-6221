@@ -2,31 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorSpawn : MonoBehaviour
+public class FloorSpawn2 : MonoBehaviour
 {
     public GameObject platformPrefab;
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
     public float destroyDelay = 2f;
-    public int maxSpawnCount = 20; // Maximum number of platforms to spawn
 
     private Transform playerTransform;
     private float nextSpawnTime;
-    private int spawnCount = 0; // Counter to keep track of spawned platforms
+    private bool canSpawn = false; // Flag to check if spawning is allowed
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        nextSpawnTime = Time.time + spawnInterval;
+        StartCoroutine(DelayedStart());
     }
 
     void Update()
     {
-        if (spawnCount < maxSpawnCount && Time.time >= nextSpawnTime)
+        if (canSpawn && Time.time >= nextSpawnTime)
         {
             SpawnPlatform();
             nextSpawnTime = Time.time + spawnInterval;
         }
+    }
+
+    IEnumerator DelayedStart()
+    {
+        // Wait for 20 seconds before allowing spawning to start
+        yield return new WaitForSeconds(20f);
+        canSpawn = true;
+        nextSpawnTime = Time.time + spawnInterval;
     }
 
     void SpawnPlatform()
@@ -34,6 +41,5 @@ public class FloorSpawn : MonoBehaviour
         Vector3 spawnPosition = playerTransform.position + Vector3.forward * spawnDistance;
         GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
         Destroy(newPlatform, destroyDelay);
-        spawnCount++; // Increment the spawn count
     }
 }
