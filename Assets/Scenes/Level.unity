@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1400791374}
     m_Modifications:
+    - target: {fileID: 576714872271297068, guid: 08f439a50b732dc48b06d829ce99b250, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ac615ff488c05b74492cb5b816cdab26, type: 2}
     - target: {fileID: 1858250848939112994, guid: 08f439a50b732dc48b06d829ce99b250, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -3860,7 +3864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2129668638
 Transform:
   m_ObjectHideFlags: 0
@@ -4311,6 +4315,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy Body
       objectReference: {fileID: 0}
+    - target: {fileID: 7502374519029915526, guid: 567217035a0b1124a83624cce590cf18, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f875b47158756a84dbdc149bffcd7043, type: 2}
     m_RemovedComponents:
     - {fileID: -1035612643657217761, guid: 567217035a0b1124a83624cce590cf18, type: 3}
     m_RemovedGameObjects: []
