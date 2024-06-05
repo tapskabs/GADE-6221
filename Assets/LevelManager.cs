@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LevelManager : MonoBehaviour
 {
-    public GameObject level2Platform; // The platform for Level 2
-    public float levelTransitionTime = 30f; // Time after which to transition to Level 2
+    public GameObject[] levelPlatforms; // Array of platforms for different levels
+    public float levelTransitionTime = 30f; // Time after which to transition to the next level
 
     public FloorSpawn floorSpawnScript; // Reference to the FloorSpawn script
     public BossSpawner bossSpawnerScript; // Reference to the BossSpawner script
 
     private Transform playerTransform;
     private PlayerMovement playerMovement; // Reference to the PlayerMovement script
+
+    private int currentLevelIndex = 0; // Index of the current level
 
     void Start()
     {
@@ -22,22 +25,25 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LevelTransition()
     {
-        yield return new WaitForSeconds(levelTransitionTime);
-        TransitionToLevel2();
+        while (true)
+        {
+            yield return new WaitForSeconds(levelTransitionTime);
+            TransitionToNextLevel();
+        }
     }
 
-    void TransitionToLevel2()
+    void TransitionToNextLevel()
     {
-        ClearLevel1();
+        ClearCurrentLevel();
         StopSpawners();
-        StartCoroutine(MovePlayerToLevel2());
+        currentLevelIndex = GetRandomLevelIndex();
+        StartCoroutine(MovePlayerToLevel(levelPlatforms[currentLevelIndex]));
     }
 
-    void ClearLevel1()
+    void ClearCurrentLevel()
     {
         // Destroy all objects with the "Level1" tag
         GameObject[] level1Objects = GameObject.FindGameObjectsWithTag("Level1");
-
         foreach (GameObject obj in level1Objects)
         {
             Destroy(obj);
@@ -58,7 +64,19 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    IEnumerator MovePlayerToLevel2()
+    int GetRandomLevelIndex()
+    {
+        // Return a random level index, different from the current one
+        int nextLevelIndex;
+        do
+        {
+            nextLevelIndex = Random.Range(0, levelPlatforms.Length);
+        } while (nextLevelIndex == currentLevelIndex);
+
+        return nextLevelIndex;
+    }
+
+    IEnumerator MovePlayerToLevel(GameObject levelPlatform)
     {
         if (playerMovement != null)
         {
@@ -66,7 +84,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // Ensure the player is slightly above the platform to avoid collisions
-        Vector3 newPosition = level2Platform.transform.position + Vector3.up * 1.5f;
+        Vector3 newPosition = levelPlatform.transform.position + Vector3.up * 1.5f;
         playerTransform.position = newPosition;
 
         // Wait a short time to ensure the player is properly placed
@@ -77,6 +95,6 @@ public class LevelManager : MonoBehaviour
             playerMovement.enabled = true; // Re-enable player movement
         }
 
-        // Additional logic for Level 2 initialization can be added here
+        // Additional logic for new level initialization can be added here
     }
 }
