@@ -27,8 +27,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+        Vector3 movement = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        rb.velocity = movement;
 
-        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        // Check if there is any movement input
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            // Play the running sound
+            FindAnyObjectByType<AudioManager>().Play("RunningGround");
+        }
+        //rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        //FindAnyObjectByType<AudioManager>().Play("RunningGround");
 
         if (Input.GetButtonDown("Jump") && jumpCount < maxJumpCount)
         {
