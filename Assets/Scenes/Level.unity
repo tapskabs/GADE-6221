@@ -827,10 +827,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6366105538746583584, guid: dd070512476756d4d860e15114f0b4a4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 248532344}
+      addedObject: {fileID: 248532343}
     - targetCorrespondingSourceObject: {fileID: 6366105538746583584, guid: dd070512476756d4d860e15114f0b4a4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 248532343}
+      addedObject: {fileID: 248532349}
   m_SourcePrefab: {fileID: 100100000, guid: dd070512476756d4d860e15114f0b4a4, type: 3}
 --- !u!1 &248532342 stripped
 GameObject:
@@ -849,11 +849,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c226d758a670ea64a87dfcce6a6d8497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level2Platform: {fileID: 248532342}
+  levelPlatforms:
+  - {fileID: 1779189031}
+  - {fileID: 248532342}
   levelTransitionTime: 2
   floorSpawnScript: {fileID: 1779189032}
   bossSpawnerScript: {fileID: 1573170162}
---- !u!114 &248532344
+--- !u!114 &248532349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -862,13 +864,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 248532342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01539aed89b43f04ea5aa8399ad5c512, type: 3}
+  m_Script: {fileID: 11500000, guid: d19f5c8badfdaa9478dd3ee264ffdb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 248532342}
   spawnInterval: 2
   spawnDistance: 10
   destroyDelay: 2
+  maxSpawnCount: 20
 --- !u!1 &264603924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2796,7 @@ GameObject:
   - component: {fileID: 1086785936}
   m_Layer: 0
   m_Name: Level
-  m_TagString: Level1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3334,7 +3337,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7314591668578492619}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779189031}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d19f5c8badfdaa9478dd3ee264ffdb03, type: 3}
   m_Name: 
@@ -4721,7 +4724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 591335997044500296, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: m_TagString
-      value: Level1
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2068200063030453708, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: m_Enabled
@@ -4771,6 +4774,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 4f3727bd86689e7498beda040aa87ad5, type: 2}
+    - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: destroyDelay
       value: 4
