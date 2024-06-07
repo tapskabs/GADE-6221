@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
     public FloorSpawnLvl2 floorSpawnLvl2Script;
     public float levelInterval = 20f;
 
+    public GameObject secondBossPrefab; // Reference to the Second Boss prefab
+    private GameObject currentBoss; // Reference to the current boss instance
+
     private bool isLevel1Active = true;
 
     void Start()
@@ -32,14 +35,33 @@ public class LevelManager : MonoBehaviour
             {
                 floorSpawnScript.StopSpawning();
                 floorSpawnLvl2Script.StartSpawning();
+                if (currentBoss != null)
+                {
+                    Destroy(currentBoss);
+                }
             }
             else
             {
                 floorSpawnLvl2Script.StopSpawning();
                 floorSpawnScript.StartSpawning();
+                SpawnSecondBoss();
             }
 
             isLevel1Active = !isLevel1Active;
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    void UpdateLevelCounter()
+    {
+        levelCounterText.text = "Levels Cleared: " + levelCount;
+    }
+
+    void SpawnSecondBoss()
+    {
+        Vector3 spawnPosition = new Vector3(0, 1, 10); // Adjust this position as needed
+        currentBoss = Instantiate(secondBossPrefab, spawnPosition, Quaternion.identity);
+    }
+>>>>>>> Stashed changes
 }
