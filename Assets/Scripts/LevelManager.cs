@@ -1,13 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     public FloorSpawn floorSpawnScript;
     public FloorSpawnLvl2 floorSpawnLvl2Script;
     public float levelInterval = 20f;
+    public TextMeshProUGUI levelCounterText; // Reference to the TMPro text element
 
     private bool isLevel1Active = true;
+    private int levelCount = 0;
 
     void Start()
     {
@@ -19,6 +22,7 @@ public class LevelManager : MonoBehaviour
 
         // Start the first level's platform spawner
         floorSpawnScript.StartSpawning();
+        UpdateLevelCounter();
         StartCoroutine(LevelCycle());
     }
 
@@ -40,6 +44,13 @@ public class LevelManager : MonoBehaviour
             }
 
             isLevel1Active = !isLevel1Active;
+            levelCount++;
+            UpdateLevelCounter();
         }
+    }
+
+    void UpdateLevelCounter()
+    {
+        levelCounterText.text = "Levels Cleared: " + levelCount;
     }
 }
