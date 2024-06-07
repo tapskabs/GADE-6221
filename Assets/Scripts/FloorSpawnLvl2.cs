@@ -8,21 +8,19 @@ public class FloorSpawnLvl2 : MonoBehaviour
     public float spawnInterval = 2f;
     public float spawnDistance = 10f;
     public float destroyDelay = 2f;
-    public int maxSpawnCount = 20;
 
     private Transform playerTransform;
     private float nextSpawnTime;
-    private int spawnCount = 0;
+    private bool isSpawning = false; // Initially set to false
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        nextSpawnTime = Time.time + spawnInterval;
     }
 
     void Update()
     {
-        if (spawnCount < maxSpawnCount && Time.time >= nextSpawnTime)
+        if (isSpawning && Time.time >= nextSpawnTime)
         {
             SpawnPlatform();
             nextSpawnTime = Time.time + spawnInterval;
@@ -34,17 +32,16 @@ public class FloorSpawnLvl2 : MonoBehaviour
         Vector3 spawnPosition = playerTransform.position + Vector3.forward * spawnDistance;
         GameObject newPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
         Destroy(newPlatform, destroyDelay);
-        spawnCount++;
     }
 
-    public void ResetSpawner()
+    public void StartSpawning()
     {
-        spawnCount = 0;
+        isSpawning = true;
         nextSpawnTime = Time.time + spawnInterval;
     }
 
     public void StopSpawning()
     {
-        enabled = false;
+        isSpawning = false;
     }
 }

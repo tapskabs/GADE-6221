@@ -833,9 +833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 1153897287333408064, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
   spawnInterval: 2
-  spawnDistance: 10
-  destroyDelay: 2
-  maxSpawnCount: 20
+  spawnDistance: 7
+  destroyDelay: 5
 --- !u!1 &264603924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,12 +2187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c226d758a670ea64a87dfcce6a6d8497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPlatforms:
-  - {fileID: 1779189031}
-  - {fileID: 248532342}
-  levelTransitionTime: 2
-  floorSpawnScript: {fileID: 0}
-  floorSpawnLvl2Script: {fileID: 0}
+  floorSpawnScript: {fileID: 1779189032}
+  floorSpawnLvl2Script: {fileID: 248532357}
+  levelInterval: 2
 --- !u!4 &934951920
 Transform:
   m_ObjectHideFlags: 0
@@ -3452,17 +3448,6 @@ Transform:
   - {fileID: 248532353}
   m_Father: {fileID: 934951920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1573170162 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -1068085521206817772, guid: 567217035a0b1124a83624cce590cf18, type: 3}
-  m_PrefabInstance: {fileID: 3679349813791008380}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab5ce43454ae7c642949a715c96749bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1747772976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4500,7 +4485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6366105538746583584, guid: dd070512476756d4d860e15114f0b4a4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7927367350862870579, guid: dd070512476756d4d860e15114f0b4a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4990,21 +4975,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8455283061915883594, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
-      propertyPath: floorSpawnScript
-      value: 
-      objectReference: {fileID: 1779189032}
-    - target: {fileID: 8455283061915883594, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
-      propertyPath: bossSpawnerScript
-      value: 
-      objectReference: {fileID: 1573170162}
-    - target: {fileID: 8455283061915883594, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
-      propertyPath: 'levelPlatforms.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1779189031}
     m_RemovedComponents:
-    - {fileID: 8455283061915883594, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
-    - {fileID: 5700722546543999873, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: -1175996677278304372, guid: e1f00bc2181dc4945b2bff170c195348, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5280,7 +5256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: destroyDelay
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8036232838695401928, guid: 21c6008ae6f8ed344a9b3d38b923e5b4, type: 3}
       propertyPath: maxSpawnCount
