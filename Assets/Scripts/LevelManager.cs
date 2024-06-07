@@ -87,4 +87,12 @@ public class LevelManager : MonoBehaviour
         Vector3 spawnPosition = new Vector3(0, 1, 10); // Adjust this position as needed
         currentBoss = Instantiate(secondBossPrefab, spawnPosition, Quaternion.identity);
     }
+
+    // Add a public method to clear the level counter high score
+    public void ClearLevelCounterHighScore()
+    {
+        highScore = 0;
+        PlayerPrefs.SetInt("HighScore", 0);
+        UpdateHighScoreCounter();
+    }
 }
