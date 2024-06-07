@@ -10,6 +10,7 @@ TagManager:
   - JumpPU
   - SpeedPU
   - Level1
+  - Level2
   layers:
   - Default
   - TransparentFX

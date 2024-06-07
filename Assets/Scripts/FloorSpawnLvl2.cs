@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorSpawn : MonoBehaviour
+public class FloorSpawnLvl2 : MonoBehaviour
 {
     public GameObject platformPrefab;
     public float spawnInterval = 2f;
