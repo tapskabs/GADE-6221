@@ -6560,6 +6560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SecondBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 5171232995565391313, guid: f4463b24524222740ad1d83a0fb1d362, type: 3}
+      propertyPath: m_TagString
+      value: Enemy Body
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
